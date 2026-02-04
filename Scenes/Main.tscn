@@ -1,14 +1,32 @@
 [gd_scene format=3 uid="uid://bc4aegy6m3diy"]
 
-[ext_resource type="Script" uid="uid://dbemddlqvgklm" path="res://Scenes/RigidBody3d.cs" id="1_r150o"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c1w88"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_idj7w"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_c1w88"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_c1w88"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1w88"]
+albedo_color = Color(0.21950102, 0.21950102, 0.21950102, 1)
+albedo_texture = SubResource("PlaceholderTexture2D_c1w88")
 
 [node name="Node3D" type="Node3D" unique_id=1155812645]
 
-[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1007678146]
-script = ExtResource("1_r150o")
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=906031854]
+transform = Transform3D(0.31903362, 0, 0, 0, 0.27394807, 0.08931141, 0, -0.11144493, 0.21954077, 0.011045575, -0.059071094, -0.25707388)
+mesh = SubResource("CapsuleMesh_c1w88")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1662269035]
-shape = SubResource("CapsuleShape3D_idj7w")
-debug_color = Color(0.9183775, 0, 0.42661375, 0.41960785)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=789756969]
+transform = Transform3D(1, 0, 0, 0, 0.5884063, 0.8085654, 0, -0.8085654, 0.5884063, 0, 0.7622266, 0)
+light_energy = 4.08
+light_indirect_energy = 3.8
+light_volumetric_fog_energy = 2.11
+sky_mode = 1
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=159118271]
+transform = Transform3D(1, 0, 0, 0, 0.9262855, 0.3768225, 0, -0.3768225, 0.9262855, 0, 0.22972879, 0.8693894)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=145314125]
+transform = Transform3D(4.594509, 0, 0, 0, 1, 0, 0, 0, 4.594509, 0, 0, 0)
+mesh = SubResource("PlaneMesh_c1w88")
+surface_material_override/0 = SubResource("StandardMaterial3D_c1w88")
