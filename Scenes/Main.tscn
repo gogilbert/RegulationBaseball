@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bc4aegy6m3diy"]
+
+[ext_resource type="Script" uid="uid://dbemddlqvgklm" path="res://Scenes/RigidBody3d.cs" id="1_r150o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_idj7w"]
+
+[node name="Node3D" type="Node3D" unique_id=1155812645]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1007678146]
+script = ExtResource("1_r150o")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=1662269035]
+shape = SubResource("CapsuleShape3D_idj7w")
+debug_color = Color(0.9183775, 0, 0.42661375, 0.41960785)
