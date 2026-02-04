@@ -10,6 +10,10 @@ albedo_color = Color(0.13682577, 0.13682574, 0.13682571, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1w88"]
 albedo_color = Color(0.01831824, 0.32865992, 0, 1)
 
+[sub_resource type="SphereMesh" id="SphereMesh_c1w88"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r150o"]
+
 [node name="Node3D" type="Node3D" unique_id=1155812645]
 
 [node name="BeanPitcher" type="MeshInstance3D" parent="." unique_id=906031854]
@@ -35,3 +39,18 @@ surface_material_override/0 = SubResource("StandardMaterial3D_r150o")
 transform = Transform3D(12.927264, 0, 0, 0, 1, 0, 0, 0, 4.594509, 0, 0, -4.4702754)
 mesh = SubResource("PlaneMesh_c1w88")
 surface_material_override/0 = SubResource("StandardMaterial3D_c1w88")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=1879081789]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8199034, -1.9343705)
+mass = 0.142
+linear_velocity = Vector3(0, 0, -10)
+constant_force = Vector3(0.1, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D" unique_id=2120334447]
+transform = Transform3D(0.10482585, 0, 0, 0, 0.10482585, 0, 0, 0, 0.10482585, 0, 0, 0)
+mesh = SubResource("SphereMesh_c1w88")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=654886575]
+transform = Transform3D(0.13060695, 0, 0, 0, 0.13060695, 0, 0, 0, 0.13060695, 0, 0, 0)
+shape = SubResource("SphereShape3D_r150o")
+debug_color = Color(2.9359758e-06, 0.43339473, 0.50942117, 0.41960785)
