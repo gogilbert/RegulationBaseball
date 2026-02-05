@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://cy8erpa2t6php"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_caiwf"]
+bounce = 0.55
+
+[sub_resource type="SphereMesh" id="SphereMesh_vbwhh"]
+radius = 0.037
+height = 0.073
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_s11nk"]
+radius = 0.037
+
+[node name="Baseball" type="Node3D" unique_id=1096141414]
+
+[node name="Baseball" type="RigidBody3D" parent="." unique_id=464884025]
+mass = 0.142
+physics_material_override = SubResource("PhysicsMaterial_caiwf")
+linear_velocity = Vector3(0, 0, -42)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Baseball" unique_id=1956029266]
+mesh = SubResource("SphereMesh_vbwhh")
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Baseball" unique_id=1474889199]
+shape = SubResource("SphereShape3D_s11nk")
+metadata/_edit_lock_ = true
