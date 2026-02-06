@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dfigrx482whpg"]
+
+[ext_resource type="Script" uid="uid://cy5rvqa0ifj27" path="res://Scripts/Pitcher.cs" id="1_xjlia"]
+[ext_resource type="PackedScene" uid="uid://ga1e28xmi80s" path="res://Scenes/Player.tscn" id="1_y8np6"]
+[ext_resource type="PackedScene" uid="uid://cy8erpa2t6php" path="res://Scenes/Baseball.tscn" id="2_2jeym"]
+
+[node name="Pitcher" type="Node3D" unique_id=2077492904 node_paths=PackedStringArray("BaseballSpawnPoint")]
+script = ExtResource("1_xjlia")
+BaseballSpawnPoint = NodePath("SpawnPoint")
+BaseballScene = ExtResource("2_2jeym")
+
+[node name="Player" parent="." unique_id=1781383448 instance=ExtResource("1_y8np6")]
+
+[node name="SpawnPoint" type="Node3D" parent="." unique_id=271775544]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.90000004, 0)

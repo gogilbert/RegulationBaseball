@@ -16,6 +16,7 @@ radius = 0.037
 mass = 0.142
 physics_material_override = SubResource("PhysicsMaterial_caiwf")
 linear_velocity = Vector3(0, 0, -42)
+linear_damp = 0.5
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Baseball" unique_id=1956029266]
 mesh = SubResource("SphereMesh_vbwhh")
