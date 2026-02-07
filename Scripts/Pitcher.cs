@@ -9,20 +9,11 @@ public partial class Pitcher : Node3D
 	[Export]
 	public PackedScene BaseballScene { get; set; }
 
-	private bool isAiming = false;
-	private bool throwOnTick = false;
-	private Vector2 mousevelocity;
+	[Export]
+	public Timer PitchTime { get; set; }
 
-    public override void _PhysicsProcess(double delta)
-    {
-		// Ensures physics can sync across clients
-        if (throwOnTick) {
-			GD.Print(mousevelocity);
-			isAiming = false;
-			throwOnTick = false;
-			ThrowBall();
-		}
-    }
+	private bool isAiming = false;
+	private Vector2 accMouseVelocity;
 
 	// Mouse speed and pitch release queued up later on physics tick
     public override void _Input(InputEvent @event)
@@ -32,14 +23,29 @@ public partial class Pitcher : Node3D
 		}
 
 		if (@event.IsActionReleased("Pitch")) {
-			throwOnTick = true;
+			isAiming = false;
+			accMouseVelocity = Vector2.Zero;
+			PitchTime.Stop();
 		}
 
         if (isAiming && @event is InputEventMouseMotion mouseMotion){
-			mousevelocity = mouseMotion.Relative;
+			if (PitchTime.IsStopped()){
+				PitchTime.Start();
+			}
+			accMouseVelocity += mouseMotion.Relative;
 		}
     }
-    public void ThrowBall(){
+	
+	// Throw pitch when 
+	private void OnPitchTimeout() {
+		GD.Print(accMouseVelocity);
+		isAiming = false;
+		PitchTime.Stop();
+		accMouseVelocity = Vector2.Zero;
+		ThrowBall();
+	}
+
+    private void ThrowBall(){
 		Node3D newBaseball = (Node3D) BaseballScene.Instantiate();
 
 		newBaseball.Position = BaseballSpawnPoint.Position;
