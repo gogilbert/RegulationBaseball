@@ -36,19 +36,20 @@ public partial class Pitcher : Node3D
 		}
     }
 	
-	// Throw pitch when 
+	// Throw pitch when timer expires
 	private void OnPitchTimeout() {
 		GD.Print(accMouseVelocity);
 		isAiming = false;
 		PitchTime.Stop();
-		accMouseVelocity = Vector2.Zero;
 		ThrowBall();
+		accMouseVelocity = Vector2.Zero;
 	}
 
     private void ThrowBall(){
-		Node3D newBaseball = (Node3D) BaseballScene.Instantiate();
+		Baseball newBaseball = BaseballScene.Instantiate<Baseball>();
 
 		newBaseball.Position = BaseballSpawnPoint.Position;
+		newBaseball.MouseVelocity = accMouseVelocity;
 
 		AddChild(newBaseball);
 	}
